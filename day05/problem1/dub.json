@@ -1,0 +1,8 @@
+{
+  "authors": [
+    "Kyle Wood"
+  ],
+  "description": "Advent of Code 2021 - Day 5, problem 1",
+  "license": "LGPL-3.0-only",
+  "name": "aoc2021day5p1"
+}

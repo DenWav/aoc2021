@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/aoc2021day5p2
+aoc2021day5p2.so
+aoc2021day5p2.dylib
+aoc2021day5p2.dll
+aoc2021day5p2.a
+aoc2021day5p2.lib
+aoc2021day5p2-test-*
+*.exe
+*.o
+*.obj
+*.lst
+out/

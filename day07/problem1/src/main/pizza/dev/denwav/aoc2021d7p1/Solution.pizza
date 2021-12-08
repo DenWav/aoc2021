@@ -1,0 +1,62 @@
+/*
+ * Copyright (c) 2021 Kyle Wood (DenWav)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, version 3 only.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package dev.denwav.aoc2021d7p1;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
+public final class Solution {
+
+    public static void main(final String[] args) throws IOException {
+        final String line;
+
+        final FileInputStream fileInput = new FileInputStream(args[0]);
+        try {
+            line = new BufferedReader(new InputStreamReader(fileInput)).readLine();
+        } finally {
+            fileInput.close();
+        }
+
+        final String[] parts = line.trim().split(",");
+        final int[] values = new int[parts.length];
+        for (int i = 0; i < parts.length; i++) {
+            values[i] = Short.parseShort(parts[i]);
+        }
+
+        Arrays.sort(values);
+
+        int minFuel = checkValue(values, values[0], values[values.length - 1], Integer.MAX_VALUE);
+        System.out.println(minFuel);
+    }
+
+    // Unnecessary tailcall recursion just to use this random language feature
+    continue static int checkValue(int[] values, int current, int maxValue, int minFuel) {
+        int fuel = 0;
+        for (int i = 0; i < values.length; i++) {
+            fuel += Math.abs(current - values[i]);
+        }
+
+        if (current == maxValue) {
+            return Math.min(fuel, minFuel);
+        }
+
+        return goto checkValue(values, current + 1, maxValue, Math.min(fuel, minFuel));
+    }
+}

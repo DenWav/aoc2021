@@ -1,0 +1,9 @@
+name: aoc2021day11p2
+description: Advent of Code 2021, Day 11, Problem 2
+version: 1.0.0
+
+environment:
+  sdk: '>=2.15.0 <3.0.0'
+
+dev_dependencies:
+  lints: ^1.0.0
